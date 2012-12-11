@@ -1,0 +1,6 @@
+#!/bin/sh
+echo "Post install:"
+echo "  Running VDR - Video Disk Recorder... "
+/bin/systemctl start vdr.service
+sleep 2
+/bin/systemctl start vdr-xine.service

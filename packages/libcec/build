@@ -1,0 +1,33 @@
+#!/bin/sh
+
+. config/options
+get_meta $1
+
+cd $PKG_BUILD_DIR
+
+do_autoconf
+
+if [ "$TARGET_MACHINE" = cubox ]; then
+  CUBOX_FLAGS="--enable-cubox --with-tda995x-toolkit-path=$(kernel_path)/drivers/video/dovefb/nxp_hdmi"
+else
+  CUBOX_FLAGS="--disable-cubox"
+fi
+
+if [ "$TARGET_MACHINE" = raspberrypi ]; then
+  LIBCEC_RPI="--enable-rpi --with-rpi-include-path=$SYSROOT_PREFIX/usr/local/include --with-rpi-lib-path=$SYSROOT_PREFIX/usr/local/lib"
+else
+  LIBCEC_RPI="--disable-rpi"
+fi
+
+do_configure --host=$TARGET_NAME \
+	--build=$HOST_NAME \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--disable-static \
+	--enable-shared \
+	$LIBCEC_RPI \
+	$CUBOX_FLAGS \
+
+
+make
+make_install

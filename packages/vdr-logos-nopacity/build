@@ -1,0 +1,10 @@
+#!/bin/sh
+
+. config/options
+
+get_meta $1
+mkdir -p $PKG_BUILD_DIR || true
+
+cd $PKG_BUILD_DIR
+mkdir -p .install/etc/vdr/plugins/skinnopacity/logos/ || true
+cp -r $ROOT/$PACKAGES/$1/logos .install/etc/vdr/plugins/skinnopacity/

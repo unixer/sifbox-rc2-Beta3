@@ -1,0 +1,16 @@
+PKG_NAME=vdr-plugin-xvdr
+PKG_URL_PROTO=git
+#PKG_URL_REV=81cc9596
+#PKG_URL_REV=90aa8f5733
+PKG_URL_REV=c2fa08a486
+PKG_URL="git://github.com/pipelka/vdr-plugin-xvdr.git"
+PKG_VERSION=0.9.6+r${PKG_URL_REV}
+#PKG_VERSION=0.9.6
+#PKG_URL="http://ppa.launchpad.net/yavdr/unstable-vdr/ubuntu/pool/main/v/vdr-plugin-xvdr/vdr-plugin-xvdr_0.9.6.git20121116-0yavdr-0yavdr1~precise.tar.gz"
+PKG_REV=1
+PKG_BUILD_DEPENDS="toolchain zlib"
+PKG_DEPENDS="vdr"
+PKG_PRIORITY=optional
+PKG_SECTION=multimedia
+PKG_SHORTDESC="VDR plugin to handle XBMC clients"
+PKG_LONGDESC="The vdr-plugin-xvdr is able to handle serveral XBMC clients connecting via the XVDR addon."

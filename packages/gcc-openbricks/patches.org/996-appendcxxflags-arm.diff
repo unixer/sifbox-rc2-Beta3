@@ -1,0 +1,13 @@
+--- gcc-openbricks-4.7.2/libstdc++-v3/testsuite/lib/libstdc++.exp.org	2012-10-18 18:39:55.183200226 +0200
++++ gcc-openbricks-4.7.2/libstdc++-v3/testsuite/lib/libstdc++.exp	2012-10-18 18:41:09.171198021 +0200
+@@ -267,6 +267,10 @@
+     }
+     append cxxflags " "
+     append cxxflags [getenv CXXFLAGS]
++    # ARM C++ emits an ABI warning for varargs.
++    if [istarget "arm*"] {
++        append cxxflags " -Wno-abi"
++    }
+     v3track cxxflags 2
+ 
+     # Always use MO files built by this test harness.
